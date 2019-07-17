@@ -1,0 +1,66 @@
+<form class="reactive" [formGroup]="loginForm" (ngSubmit)="send()" novalidate="">
+    <h1>Formulario Reactivo</h1>
+    <div class="campos">
+        <input class="form-item" [ngClass]="{'is-invalid': !loginForm.get('nombre').valid}" type="text"
+            placeholder="Nombre" formControlName="nombre">
+        <span *ngIf="loginForm.controls['nombre'].errors?.required" class="req">
+            *
+        </span>
+        <span *ngIf="loginForm.controls['nombre'].errors?.minlength">
+            Por lo menos 3 caracteres
+        </span>
+        <span *ngIf="loginForm.controls['nombre'].errors?.pattern">
+            Solo caracteres alfabéticos
+        </span>
+    </div>
+
+    <div class="campos">
+        <input class="form-item" [ngClass]="{'is-invalid': !loginForm.get('apellido').valid}" type="text"
+            placeholder="Apellido" formControlName="apellido">
+        <span *ngIf="loginForm.controls['apellido'].errors?.required" class="req">
+            *
+        </span>
+        <span *ngIf="loginForm.controls['apellido'].errors?.minlength">
+            Por lo menos 3 caracteres
+        </span>
+        <span *ngIf="loginForm.controls['apellido'].errors?.pattern">
+            Solo caracteres alfabéticos
+        </span>
+    </div>
+
+    <div class="campos">
+        <input class="form-item" [ngClass]="{'is-invalid': !loginForm.get('email').valid}" type="text"
+            placeholder="Correo Electrónico" formControlName="email">
+        <span *ngIf="loginForm.controls['email'].errors?.required" class="req">
+            *
+        </span>
+        <span *ngIf="loginForm.controls['email'].errors?.pattern">
+            Correo Inválido
+        </span>
+    </div>
+
+    <div class="campos">
+        <input class="form-item" [ngClass]="{'is-invalid': !loginForm.get('password').valid}" type="password"
+            placeholder="Contraseña" formControlName="password">
+        <span *ngIf="loginForm.controls['password'].errors?.required" class="req">
+            *
+        </span>
+        <span *ngIf="loginForm.controls['password'].errors?.minlength">
+            Debe ser por lo menos 8 caracteres
+        </span>
+    </div>
+
+    <div class="campos form-form">
+        <h2>Referencias:</h2>
+        <div formArrayName="referencias">
+            <div *ngFor="let item of arrayForm.controls; let i=index " [formGroupName]="i">
+                <input type="text" class="form-control" formControlName="nombreRef" placeholder="Nombre">
+                <input type="text" class="form-control" formControlName="telefono" placeholder="Teléfono">
+                <input type="text" class="form-control" formControlName="parentezco" placeholder="Parentezco">
+            </div>
+        </div>
+        <button class="btn-add" (click)="addForm()">Agregar</button>
+    </div>
+
+    <button class="btn" (click)="send()" [disabled]="!loginForm.valid">Enviar</button>
+</form>
