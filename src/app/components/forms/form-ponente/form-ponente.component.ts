@@ -9,10 +9,14 @@ import { FormBuilder, FormGroup, FormControl, FormArray, Validators } from '@ang
 export class FormPonenteComponent implements OnInit {
 
   loginForm: FormGroup
-  referencias: string[]
 
   constructor(private formBuilder: FormBuilder) {
     this.loginForm = new FormGroup({
+      'dni': new FormControl('', [
+        Validators.required,
+        Validators.minLength(10),
+        Validators.maxLength(15)
+      ]),
       'nombre': new FormControl('', [
         Validators.required,
         Validators.minLength(3),
@@ -27,33 +31,17 @@ export class FormPonenteComponent implements OnInit {
         Validators.required,
         Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')
       ]),
-      'password': new FormControl('', [
+      'telefono': new FormControl('', [
         Validators.required,
-        Validators.minLength(8)
-      ]),
-
-      referencias: this.formBuilder.array([this.formBuilder.group({
-        nombreRef: ['', [Validators.required, Validators.pattern('[^0-9]*[A-Z]?[a-zñáéíóú]+')]],
-        telefono: ['', [Validators.required, Validators.pattern('(09)+[0-9]{8}')]],
-        parentezco: [, [Validators.required, Validators.pattern('[^0-9]*[A-Z]?[a-zñáéíóú]+')]]
-      })])
+        Validators.pattern('(09)+[0-9]{8}')
+      ])
     });
-
-
   }
 
   ngOnInit() {
   }
+  
   send() {
     console.log(this.loginForm.value);
-    console.log('referencias' + this.referencias)
-  }
-
-  get arrayForm() {
-    return this.loginForm.get('referencias') as FormArray;
-  }
-  addForm() {
-    const controltel = <FormArray>this.loginForm.controls['referencias'];
-    controltel.push(this.formBuilder.group({ nombreRef: [], telefono: [], parentezco: [] }));
   }
 }

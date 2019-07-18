@@ -3,10 +3,25 @@
 .img {
   width: 100%;
   height: 100%;
+  padding: 0 0 140px 0;
+  position: relative;
+  @include bgCovertint($r-beige, $g-beige, $b-beige, $r-brownCoffe, $g-brownCoffe, $b-brownCoffe, $alfa, $imagen);
+  h1{
+    padding: 30px 300px 0 300px;
+  }
+  img{
+    position: absolute;
+    top: 25px;
+    right: 50px;
+    width: 250px;
+    height: 180px;
+  }
 }
 
+
 .btn-home {
-    padding: 0 0 0 900px;
+  padding: 120px 0 0 900px;
+
   * {
     box-sizing: border-box;
     margin: 0;
@@ -29,7 +44,7 @@
     color: #000;
     background-color: #96cee0;
     text-align: center;
-    border-radius: 25px;
+    border-radius: 15px;
     font-size: 25px;
 
   }
@@ -51,80 +66,122 @@
   }
 }
 
+/********************* FOOTER *********************/
 
+.footer {
+  // margin-top: 20px;
+  width: 100%;
+  height: 30px;
+  padding-top: 12px;
+  background-color: #688cc0;
 
-/**************************** REACTIVE FORM ******************************/
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
 
-.reactive{
-  h1{
-      margin-bottom: 100px;
-      font-family: 'Courier New', Courier, monospace;
+    li {
+      float: left;
+      margin-left: 400px;
 
+      a {
+        display: contents;
+        text-decoration: none;
+        color: #fff;
+        font-size: 20px;
+      }
+    }
   }
-  padding: 100px 100px;
+}
+
+
+/**************************** FORM ******************************/
+
+.reactive {
+  margin-bottom: 19px;
+  padding: 0px 100px;
   text-align: center;
   margin-top: 1px;
-  .campos{
-      margin-bottom: 50px;
-      input{
-          font-family: 'Courier New', Courier, monospace;
-          font-size: 20px;
-          text-align: center;
-          border: none;
-          background: none;
-          border-bottom: 1px solid #fff;
-          color: #30343a;
-          outline: none;
-      }
-      .req{
-          display: inline;
-          margin-left: 10px;
-          color: #ff1414;
-          font-family: 'Courier New', Courier, monospace;
-
-      }
-      span{
-          display: block;
-          margin-top: 10px;
-          color: #ff1414;
-          font-family: 'Courier New', Courier, monospace;
-      }
-      .add{
-          border-bottom: none;
-      }
-  }
-  .form-form{
-      border: 2px solid #7c8a84;
-      border-radius: 40px;
-      padding: 40px 0;
-      margin: 40px 180px;
-      h2{
-          font-family: 'Courier New', Courier, monospace;
-          color: #fff;
-          text-align: left;
-          margin: 0 0 35px 30px;
-      }
-      input{
-          margin-bottom: 35px;
-      }
-      .btn-add{
-          font-family: 'Courier New', Courier, monospace;
-          font-size: 15px;
-          outline: none;
-          background: transparent;
-          border-radius: 25px;
-          background-color: aliceblue;
-          padding: 4px 16px;
-      }
+  padding-bottom: 68px;
+  h1 {
+    margin-bottom: 70px;
+    font-family: 'Courier New', Courier, monospace;
   }
 
-  .btn{
-      font-size: 15px;
-      outline: none;
-      background: transparent;
-      border-radius: 25px;
-      padding: 5px 44px;
-      background-color: #92c5f1;
+  .campos {
+    margin-bottom: 50px;
+
+    input {
       font-family: 'Courier New', Courier, monospace;
+      font-size: 20px;
+      text-align: center;
+      border: none;
+      background: none;
+      border-bottom: 1px solid #fff;
+      color: #30343a;
+      outline: none;
+    }
+
+    .req {
+      display: inline;
+      margin-left: 10px;
+      color: #ff1414;
+      font-family: 'Courier New', Courier, monospace;
+
+    }
+
+    span {
+      display: block;
+      margin-top: 10px;
+      color: #ff1414;
+      font-family: 'Courier New', Courier, monospace;
+    }
+
   }
+
+  .form-form {
+    border: 2px solid #7c8a84;
+    border-radius: 40px;
+    padding: 40px 0;
+    margin: 40px 180px;
+
+    h2 {
+      font-family: 'Courier New', Courier, monospace;
+      color: #fff;
+      text-align: left;
+      margin: 0 0 35px 30px;
+    }
+
+    input {
+      margin-bottom: 35px;
+    }
+  }
+
+  .btn {
+    font-size: 15px;
+    outline: none;
+    background: transparent;
+    border-radius: 25px;
+    padding: 5px 44px;
+    background-color: #92c5f1;
+    font-family: 'Courier New', Courier, monospace;
+  }
+}
+
+/************************* IMGS **************************/
+
+.side-1{
+  position: absolute;
+  width: 340px;
+  top: 8px;
+  left: 16px;
+  opacity: 0.8;
+}
+
+.side-2{
+  position: absolute;
+  width: 340px;
+  top: 8px;
+  right: 16px;
+  opacity: 0.8;
 }

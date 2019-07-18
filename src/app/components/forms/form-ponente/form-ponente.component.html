@@ -1,8 +1,23 @@
 <form class="reactive" [formGroup]="loginForm" (ngSubmit)="send()" novalidate="">
-    <h1>Formulario Reactivo</h1>
+    <h1>Inscripción Ponente</h1>
+    <div class="campos">
+        <img class="side-1" src="../../../../assets/img/side-1.jpg" alt="">
+        <img class="side-2" src="../../../../assets/img/side-1.jpg" alt="">
+        <input class="form-item" [ngClass]="{'is-invalid': !loginForm.get('dni').valid}" type="text" placeholder="DNI"
+            formControlName="dni">
+        <span *ngIf="loginForm.controls['dni'].errors?.required" class="req">
+            *
+        </span>
+        <span *ngIf="loginForm.controls['dni'].errors?.minlength">
+            Mínimo 10 caracteres
+        </span>
+        <span *ngIf="loginForm.controls['dni'].errors?.maxlength">
+            Máximo 15 caracteres
+        </span>
+    </div>
     <div class="campos">
         <input class="form-item" [ngClass]="{'is-invalid': !loginForm.get('nombre').valid}" type="text"
-            placeholder="Nombre" formControlName="nombre">
+            placeholder="Nombres" formControlName="nombre">
         <span *ngIf="loginForm.controls['nombre'].errors?.required" class="req">
             *
         </span>
@@ -16,12 +31,12 @@
 
     <div class="campos">
         <input class="form-item" [ngClass]="{'is-invalid': !loginForm.get('apellido').valid}" type="text"
-            placeholder="Apellido" formControlName="apellido">
+            placeholder="Apellidos" formControlName="apellido">
         <span *ngIf="loginForm.controls['apellido'].errors?.required" class="req">
             *
         </span>
         <span *ngIf="loginForm.controls['apellido'].errors?.minlength">
-            Por lo menos 3 caracteres
+            Mínimo 3 caracteres
         </span>
         <span *ngIf="loginForm.controls['apellido'].errors?.pattern">
             Solo caracteres alfabéticos
@@ -40,26 +55,14 @@
     </div>
 
     <div class="campos">
-        <input class="form-item" [ngClass]="{'is-invalid': !loginForm.get('password').valid}" type="password"
-            placeholder="Contraseña" formControlName="password">
-        <span *ngIf="loginForm.controls['password'].errors?.required" class="req">
+        <input class="form-item" [ngClass]="{'is-invalid': !loginForm.get('telefono').valid}" type="text"
+            placeholder="Teléfono" formControlName="telefono">
+        <span *ngIf="loginForm.controls['telefono'].errors?.required" class="req">
             *
         </span>
-        <span *ngIf="loginForm.controls['password'].errors?.minlength">
-            Debe ser por lo menos 8 caracteres
+        <span *ngIf="loginForm.controls['telefono'].errors?.pattern">
+            Número Inválido
         </span>
-    </div>
-
-    <div class="campos form-form">
-        <h2>Referencias:</h2>
-        <div formArrayName="referencias">
-            <div *ngFor="let item of arrayForm.controls; let i=index " [formGroupName]="i">
-                <input type="text" class="form-control" formControlName="nombreRef" placeholder="Nombre">
-                <input type="text" class="form-control" formControlName="telefono" placeholder="Teléfono">
-                <input type="text" class="form-control" formControlName="parentezco" placeholder="Parentezco">
-            </div>
-        </div>
-        <button class="btn-add" (click)="addForm()">Agregar</button>
     </div>
 
     <button class="btn" (click)="send()" [disabled]="!loginForm.valid">Enviar</button>
